@@ -75,14 +75,14 @@ var TableCell = React.createClass({
     modalAlert: React.PropTypes.func,
     dateInput: React.PropTypes.func,
     token: React.PropTypes.string,
-    updateNeeded: React.PropTypes.bool.isRequired,
     utils: React.PropTypes.object
   },
   propTypes: {
     columnType: React.PropTypes.string,
     value: React.PropTypes.any,
     key: React.PropTypes.string,
-    loadingSpin: React.PropTypes.string
+    loadingSpin: React.PropTypes.string,
+    updateNeeded: React.PropTypes.bool.isRequired
   },
   render: function () {
     var cellHTML = (function (self) {

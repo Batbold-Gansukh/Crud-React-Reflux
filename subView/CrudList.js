@@ -95,6 +95,8 @@ var CrudList = React.createClass({
     delta: React.PropTypes.number.isRequired,
     search: React.PropTypes.string,
 
+    Link : React.PropTypes.element,
+
     newMsg: React.PropTypes.string,
     searchMsg: React.PropTypes.string,
     operationMsg: React.PropTypes.string,
@@ -137,9 +139,9 @@ var CrudList = React.createClass({
           </div>
           <div className="large-1 medium-3 small-6 columns">
           {(this.props.newAddress) ?
-            <a href={this.props.newAddress} className="button tiny success">
+            <this.props.Link to={this.props.newAddress} params={{efrom: this.props.from}} className="button tiny success">
               {this.props.newMsg||"Нэмэх"}
-            </a>
+            </this.props.Link>
             : null}
           </div>
           <div className="large-4 medium-12 small-12 columns">
