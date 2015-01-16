@@ -61,7 +61,7 @@ var CrudList = React.createClass({
     if (ids.length === 0) return " "
     return "(" + ids.length + ")"
   },
-  _deleteEntities: function () {
+  _deleteEntities() {
     if (this._getSelectedIds().length === 0) return;
     if (confirm(this._getDeleteSelectedText() + (this.props.deleteAskMsg || " ширхэг өгөгдлийг устгах уу?"))) {
       CrudActions.deleteEntities(this.props.tableName, this._getSelectedIds(),
@@ -69,6 +69,12 @@ var CrudList = React.createClass({
       this.state.loading = true
       this.setState(this.state)
     }
+  },
+  _deleteEntity(id) {
+    CrudActions.deleteEntities(this.props.tableName, [id], this.context.utils.toInt(this.props.from),
+      this.props.count, this.props.search, this.context.token)
+    this.state.loading = true
+    this.setState(this.state)
   },
   _search: function (evt) {
     if (evt.which === 13) {
@@ -118,6 +124,7 @@ var CrudList = React.createClass({
           count={self.props.count}
           search = {self.state.search}
           actions = {CrudActions}
+          deleteCallback = {self._deleteEntity}
           loadingSpin = {self.props.loadingSpin}
           deleteNeeded = {(self.props.deleteEntitiesUrl) ? true : false}
           updateNeeded = {(self.props.updateEntityUrl) ? true : false}

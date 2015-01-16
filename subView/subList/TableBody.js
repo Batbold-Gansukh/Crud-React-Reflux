@@ -5,8 +5,9 @@ var _ = require('lodash')
 var TableBody = React.createClass({
   _deleteEntity: function (id) {
     if (confirm("Устгах уу?")) {
-      this.props.actions.deleteEntities(this.props.tableName, [id], this.props.from,
-        this.props.count, this.props.search, this.context.token)
+      //this.props.actions.deleteEntities(this.props.tableName, [id], this.props.from,
+      //  this.props.count, this.props.search, this.context.token)
+      this.props.deleteCallback(id)
     }
   },
   _selectEntity: function (id, evt) {
@@ -16,6 +17,7 @@ var TableBody = React.createClass({
     token: React.PropTypes.string
   },
   propTypes:{
+    deleteCallback: React.PropTypes.func,
     deleteNeeded: React.PropTypes.bool.isRequired,
     updateNeeded: React.PropTypes.bool.isRequired
   },
