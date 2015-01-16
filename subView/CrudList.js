@@ -63,9 +63,11 @@ var CrudList = React.createClass({
   },
   _deleteEntities: function () {
     if (this._getSelectedIds().length === 0) return;
-    if (confirm(this._getDeleteSelectedText() + (this.props.deleteAskMsg||" ширхэг өгөгдлийг устгах уу?"))) {
+    if (confirm(this._getDeleteSelectedText() + (this.props.deleteAskMsg || " ширхэг өгөгдлийг устгах уу?"))) {
       CrudActions.deleteEntities(this.props.tableName, this._getSelectedIds(),
         this.context.utils.toInt(this.props.from), this.props.count, this.state.search, this.context.token)
+      this.state.loading = true
+      this.setState(this.state)
     }
   },
   _search: function (evt) {
@@ -79,7 +81,7 @@ var CrudList = React.createClass({
     token: React.PropTypes.string,
     utils: React.PropTypes.object.isRequired
   },
-  propTypes:{
+  propTypes: {
     columns: React.PropTypes.object.isRequired,
     loadingSpin: React.PropTypes.string.isRequired,
     tableName: React.PropTypes.string.isRequired,
@@ -88,8 +90,8 @@ var CrudList = React.createClass({
     delta: React.PropTypes.number.isRequired,
     search: React.PropTypes.string,
 
-    Link : React.PropTypes.func,
-    transitionTo : React.PropTypes.func,
+    Link: React.PropTypes.func,
+    transitionTo: React.PropTypes.func,
 
     newMsg: React.PropTypes.string,
     searchMsg: React.PropTypes.string,
@@ -128,13 +130,13 @@ var CrudList = React.createClass({
         <div className="row">
           <div className="large-1 medium-3 small-6 columns">
             <a onClick={this._deleteEntities} className="button tiny alert">
-            {this._getDeleteSelectedText() + (this.props.deleteButtonMsg||" Устгах")}
+            {this._getDeleteSelectedText() + (this.props.deleteButtonMsg || " Устгах")}
             </a>
           </div>
           <div className="large-1 medium-3 small-6 columns">
           {(this.props.newAddress) ?
             <this.props.Link to={this.props.newAddress} params={{efrom: this.props.from}} className="button tiny success">
-              {this.props.newMsg||"Нэмэх"}
+              {this.props.newMsg || "Нэмэх"}
             </this.props.Link>
             : null}
           </div>
@@ -148,7 +150,7 @@ var CrudList = React.createClass({
           </div>
           <div className="large-6 medium-12 small-12 columns">
             <input type="text" defaultValue={this.state.search} onKeyUp={this._search}
-              placeholder={this.props.searchMsg||"Хайлт"}/>
+              placeholder={this.props.searchMsg || "Хайлт"}/>
           </div>
           <div className="large-12 medium-12 small-12 columns">
             <table role="grid">
@@ -163,7 +165,7 @@ var CrudList = React.createClass({
                       return <td key={key}>{columns[key].name}</td>
                     })}
                   {(this.props.deleteEntitiesUrl) ?
-                    <td>{this.props.operationMsg||"Үйлдлүүд"}</td>
+                    <td>{this.props.operationMsg || "Үйлдлүүд"}</td>
                     : null}
                 </tr>
               </thead>
