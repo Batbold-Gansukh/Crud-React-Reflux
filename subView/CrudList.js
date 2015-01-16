@@ -95,7 +95,7 @@ var CrudList = React.createClass({
     delta: React.PropTypes.number.isRequired,
     search: React.PropTypes.string,
 
-    Link : React.PropTypes.element,
+    Link : React.PropTypes.func,
 
     newMsg: React.PropTypes.string,
     searchMsg: React.PropTypes.string,
