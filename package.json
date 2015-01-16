@@ -2,11 +2,10 @@
   "name": "Crud-React-Reflux",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "CrudView.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main":"CrudView.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Batbold-Gansukh/crud-react-reflux.git"
@@ -16,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Batbold-Gansukh/crud-react-reflux/issues"
   },
-  "homepage": "https://github.com/Batbold-Gansukh/crud-react-reflux"
+  "homepage": "https://github.com/Batbold-Gansukh/crud-react-reflux",
+  "devDependencies": {
+    "react": "^0.12.2",
+    "reflux": "^0.2.3",
+    "superagent": "^0.21.0"
+  }
 }

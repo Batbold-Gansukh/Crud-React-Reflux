@@ -125,7 +125,7 @@ var TableCell = React.createClass({
       </span>)
       var defaultEdit = (<span>
         <input ref="editInput" type="text" defaultValue={value} onKeyUp={self._onKeyUp}/>
-                {updateCancel}
+        {updateCancel}
       </span>)
       switch (self.props.columnType) {
         case "int":
