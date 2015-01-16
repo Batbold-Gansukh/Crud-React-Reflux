@@ -1,17 +1,10 @@
-'use strict'
-
 var React = require('react')
 var CrudActions = require('../actions/CrudActions')
 var CrudListStore = require('../stores/CrudListStore')
-var CrudActionStore = require('../stores/CrudActionStore')
-//var Router = require('react-router')
-//var Link = Router.Link
-//var Navigation = Router.Navigation
 var TableBody = require("./subList/TableBody")
 var TableLoading = require("./subList/TableLoading")
 
 var CrudList = React.createClass({
-  //mixins: [Router.State, Navigation],
   getInitialState: function () {
     return {rows: {}, loading: false, selectAll: false, search: ""}
   },
@@ -45,7 +38,7 @@ var CrudList = React.createClass({
       this.state.selectAll = selectAll
     var paginationSize = this.context.utils.toInt(this.context.utils.paginationSize(size, this.props.count))
     if (paginationSize < this.props.from) {
-      this.transitionTo(this.props.listAddress, {efrom: paginationSize})
+      this.props.transitionTo(this.props.listAddress, {efrom: paginationSize})
     } else {
       this.setState(this.state)
     }
@@ -96,6 +89,7 @@ var CrudList = React.createClass({
     search: React.PropTypes.string,
 
     Link : React.PropTypes.func,
+    transitionTo : React.PropTypes.func,
 
     newMsg: React.PropTypes.string,
     searchMsg: React.PropTypes.string,

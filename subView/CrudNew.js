@@ -1,27 +1,26 @@
-'use strict'
 var React = require('react')
 var CrudActions = require('../actions/CrudActions')
 var CrudActionStore = require('../stores/CrudActionStore')
 
 var CrudNew = React.createClass({
-  getInitialState: function () {
+  getInitialState() {
     return {status: null, msg: null, loading: false}
   },
-  _createNew: function (columnValues) {
+  _createNew(columnValues) {
     var values = {"table": this.props.tableName, "columns": columnValues}
     CrudActions.createNew(values, this.context.token)
     this.state.loading = true
     this.state.status = null
     this.setState(this.state)
   },
-  componentDidMount: function () {
+  componentDidMount() {
     CrudActionStore.createNewUrl = this.props.createNewUrl
     this.unsubscribe = CrudActionStore.listen(this._statusUpdate)
   },
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     this.unsubscribe()
   },
-  _statusUpdate: function (status) {
+  _statusUpdate(status) {
     var props = this.props
     var msg = (function () {
       return status === "success" ? (props.successMsg || "Амжилттай боллоо")
@@ -29,7 +28,7 @@ var CrudNew = React.createClass({
     })()
     this.setState({msg: msg, status: status, loading: false})
   },
-  _backAction: function () {
+  _backAction() {
     this.props.transitionTo(this.props.listAddress, {efrom: this.props.from})
   },
   contextTypes: {
@@ -53,7 +52,7 @@ var CrudNew = React.createClass({
 
     transitionTo: React.PropTypes.func.isRequired
   },
-  render: function () {
+  render() {
     var columns = this.props.columns
     return <this.context.form
       columns={columns}
