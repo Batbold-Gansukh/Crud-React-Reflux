@@ -87,7 +87,7 @@ var CrudList = React.createClass({
     utils: React.PropTypes.object.isRequired
   },
   propTypes:{
-    columns: React.PropTypes.object.isRequied,
+    //columns: React.PropTypes.object.isRequied,
     loadingSpin: React.PropTypes.string.isRequied,
     tableName: React.PropTypes.string.isRequied,
     from: React.PropTypes.string.isRequied,
