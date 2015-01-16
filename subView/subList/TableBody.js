@@ -17,6 +17,16 @@ var TableBody = React.createClass({
     token: React.PropTypes.string
   },
   propTypes:{
+    columns: React.PropTypes.object.isRequired,
+    rows: React.PropTypes.object.isRequired,
+
+    tableName: React.PropTypes.string.isRequired,
+    search: React.PropTypes.string.isRequired,
+    loadingSpin: React.PropTypes.string.isRequired,
+    from: React.PropTypes.number.isRequired,
+    count: React.PropTypes.number.isRequired,
+    actions: React.PropTypes.object.isRequired,
+
     deleteCallback: React.PropTypes.func,
     deleteNeeded: React.PropTypes.bool.isRequired,
     updateNeeded: React.PropTypes.bool.isRequired
@@ -52,7 +62,7 @@ var TableBody = React.createClass({
               })}
             {(this.props.deleteNeeded)?
             <td>
-              <a className="inline-cancel" onClick={self._deleteEntity.bind(self, row.ID)}>&#x2717;</a>
+              <a className="row-delete inline-cancel" onClick={self._deleteEntity.bind(self, row.ID)}>&#x2717;</a>
             </td>
             :null}
           </tr>)

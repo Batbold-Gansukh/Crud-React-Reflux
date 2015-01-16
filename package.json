@@ -4,9 +4,6 @@
   "description": "",
   "main": "CrudView.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "scripts": {
     "test": "jest"
   },
   "jest": {
@@ -26,10 +23,11 @@
   },
   "homepage": "https://github.com/Batbold-Gansukh/crud-react-reflux",
   "devDependencies": {
+    "jest-cli": "^0.2.1",
+    "lodash": "^2.4.1",
     "react": "^0.12.2",
     "react-tools": "^0.12.2",
     "reflux": "^0.2.3",
-    "jest-cli": "^0.2.1",
     "superagent": "^0.21.0"
   }
 }

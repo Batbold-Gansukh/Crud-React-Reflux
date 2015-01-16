@@ -85,20 +85,21 @@ var TableCell = React.createClass({
     updateNeeded: React.PropTypes.bool.isRequired
   },
   render: function () {
-    var cellHTML = (function (self) {
+
+    var cellHTML = ((self) => {
       switch (self.props.columnType) {
         case "int":
         {
-          var intRender = self.context.intRender || function (value) {
+          var intRender = self.context.intRender || ((value) => {
               return value
-            }
+            })
           return intRender(self.props.value)
         }
         case "float":
         {
-          var floatRender = self.context.floatRender || function (value) {
+          var floatRender = self.context.floatRender || ((value)=> {
               return value
-            }
+            })
           return floatRender(self.props.value)
         }
         case "date":
@@ -108,16 +109,17 @@ var TableCell = React.createClass({
         }
         case "img":
         {
-          var imgRender = self.context.imgRender || function (value) {
+          var imgRender = self.context.imgRender || ((value)=> {
               return <img width="42" src={value}/>
-            }
-          return imgRender(self.props.value);
+            })
+          return imgRender(self.props.value)
         }
         default:
           return self.props.value
       }
     })(this)
-    var editHTML = (function (self) {
+
+    var editHTML = ((self) => {
       var value = self.props.value
       var updateCancel = (<span>
         <span onClick={self._updateEdit} className="inline-update">&#10004;</span>
@@ -164,7 +166,8 @@ var TableCell = React.createClass({
           return defaultEdit;
       }
     })(this)
-    var cell = (function (self) {
+
+    var cell = ((self) => {
       if (self.state.status === undefined || self.state.status === false) {
         return (<span onDoubleClick={self._doubleClick}>
                     {cellHTML}
