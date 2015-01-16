@@ -87,13 +87,13 @@ var CrudList = React.createClass({
     utils: React.PropTypes.object.isRequired
   },
   propTypes:{
-    //columns: React.PropTypes.object.isRequied,
-    loadingSpin: React.PropTypes.string.isRequied,
-    tableName: React.PropTypes.string.isRequied,
-    from: React.PropTypes.string.isRequied,
-    count: React.PropTypes.number.isRequied,
-    delta: React.PropTypes.number.isRequied,
-    search: React.PropTypes.string.isRequied,
+    columns: React.PropTypes.object.isRequired,
+    loadingSpin: React.PropTypes.string.isRequired,
+    tableName: React.PropTypes.string.isRequired,
+    from: React.PropTypes.string.isRequired,
+    count: React.PropTypes.number.isRequired,
+    delta: React.PropTypes.number.isRequired,
+    search: React.PropTypes.string.isRequired,
 
     newMsg: React.PropTypes.string,
     searchMsg: React.PropTypes.string,
