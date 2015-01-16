@@ -6,7 +6,7 @@ var CrudListStore = require('../stores/CrudListStore')
 var CrudActionStore = require('../stores/CrudActionStore')
 //var Router = require('react-router')
 //var Link = Router.Link
-var Navigation = Router.Navigation
+//var Navigation = Router.Navigation
 var TableBody = require("./subList/TableBody")
 var TableLoading = require("./subList/TableLoading")
 
