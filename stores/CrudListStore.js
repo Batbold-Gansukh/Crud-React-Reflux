@@ -1,5 +1,3 @@
-'use strict'
-
 var Reflux = require('reflux')
 var crudActions = require('../actions/CrudActions')
 var $ = require('superagent')
@@ -12,7 +10,7 @@ var CrudListStore = Reflux.createStore({
 
   init: function () {
     this.listenTo(crudActions.loadEntities, this._loadBets)
-    this.listenTo(crudActions.commitUpdate, this._commitUpdateBet)
+    this.listenTo(crudActions.commitUpdate, this._commitUpdate)
     this.listenTo(crudActions.selectEntity, this._createBet)
     this.listenTo(crudActions.selectAllEntity, this._deleteBet)
     this.listenTo(crudActions.deleteEntities, this._deleteEntities)
@@ -60,8 +58,7 @@ var CrudListStore = Reflux.createStore({
         self._refreshList(result)
       })
   },
-  _commitUpdateBet: function (tableName, columnName, id, updateValue, fromE, count, search, columnType, token) {
-    console.log("Instore commit update test:")
+  _commitUpdate: function (tableName, columnName, id, updateValue, fromE, count, search, columnType, token) {
     var self = this
     $.post(self.updateEntityUrl)
       .set('X-Auth-Token', token)
@@ -75,7 +72,6 @@ var CrudListStore = Reflux.createStore({
   },
   _deleteEntities: function (tableName, ids, fromE, count, search, token) {
     var self = this
-    console.log("delete:" + search)
     $.post(self.deleteEntitiesUrl)
       .set('X-Auth-Token', token)
       .send({name: tableName, ids: ids, from: fromE, count: count, search: search})
