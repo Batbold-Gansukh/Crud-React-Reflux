@@ -27,10 +27,10 @@ var CrudList = React.createClass({
     this.unsubscribe()
   },
 
-  //componentWillReceiveProps: function () {
-  //  this.state.from = this.getParams().efrom
-  //  this._loadEntities()
-  //},
+  componentWillReceiveProps(nextProps) {
+    this.state.from = nextProps.from
+    this._loadEntities()
+  },
   _loadEntities: function () {
     var listFrom = this.context.utils.toInt(this.state.from)
     CrudActions.loadEntities(this.props.tableName, listFrom, this.props.count, this.state.search, this.context.token)
