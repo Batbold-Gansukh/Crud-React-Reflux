@@ -107,6 +107,7 @@ var CrudList = React.createClass({
 
     newAddress: React.PropTypes.string,
     listAddress: React.PropTypes.string,
+    listEntitiesUrl: React.PropTypes.string,
     deleteEntitiesUrl: React.PropTypes.string,
     updateEntitiesUrl: React.PropTypes.string
   },
@@ -137,7 +138,7 @@ var CrudList = React.createClass({
         <div className="row">
           <div className="large-1 medium-3 small-6 columns">
           {(this.props.deleteEntitiesUrl)?
-            <a onClick={this._deleteEntities} className="button tiny alert">
+            <a onClick={this._deleteEntities} className="deleteEntities button tiny alert">
             {this._getDeleteSelectedText() + (this.props.deleteButtonMsg || " Устгах")}
             </a>
             :null}

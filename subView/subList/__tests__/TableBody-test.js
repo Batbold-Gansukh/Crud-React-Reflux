@@ -62,6 +62,7 @@ describe('TableBody', ()=> {
 
   beforeEach(()=> {
     modalAlert = jest.genMockFn
+    TableCell.mockClear()
   })
 
   it("should display correctly", ()=> {
@@ -91,4 +92,33 @@ describe('TableBody', ()=> {
     expect(TableCell.mock.calls.length).toBe(Object.keys(rows).length * Object.keys(columns).length)
 
   })
+
+  it("should not display delete update when necessary", ()=> {
+
+    var tb = TestUtils.renderIntoDocument(React.withContext({
+      modalAlert: modalAlert
+    }, ()=> {
+      return <TableBody
+        columns={columns}
+        rows={rows}
+
+        tableName={tableName}
+        search={search}
+        loadingSpin={loadingSpin}
+        from={from}
+        count={count}
+        actions={actions}
+
+        deleteCallback={deleteCallback}
+        deleteNeeded={false}
+        updateNeeded={false}
+      />
+    }))
+
+    expect(TestUtils.scryRenderedDOMComponentsWithTag(tb,'input').length).toBe(0)
+    expect(TestUtils.scryRenderedDOMComponentsWithClass(tb,'row-delete').length).toBe(0)
+    expect(TableCell.mock.calls.length).toBe(Object.keys(rows).length * Object.keys(columns).length)
+
+  })
+
 })
