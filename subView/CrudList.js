@@ -95,6 +95,7 @@ var CrudList = React.createClass({
     count: React.PropTypes.number.isRequired,
     delta: React.PropTypes.number.isRequired,
     search: React.PropTypes.string,
+    tableClassName: React.PropTypes.string,
 
     Link: React.PropTypes.func,
     transitionTo: React.PropTypes.func,
@@ -163,7 +164,7 @@ var CrudList = React.createClass({
               placeholder={this.props.searchMsg || "Хайлт"}/>
           </div>
           <div className="large-12 medium-12 small-12 columns">
-            <table role="grid">
+            <table role="grid" className={this.props.tableClassName}>
               <thead>
                 <tr>
                 {(this.props.deleteEntitiesUrl) ?
