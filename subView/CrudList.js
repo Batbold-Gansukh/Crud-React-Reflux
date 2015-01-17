@@ -136,9 +136,11 @@ var CrudList = React.createClass({
       <div id="crudList">
         <div className="row">
           <div className="large-1 medium-3 small-6 columns">
+          {(this.props.deleteEntitiesUrl)?
             <a onClick={this._deleteEntities} className="button tiny alert">
             {this._getDeleteSelectedText() + (this.props.deleteButtonMsg || " Устгах")}
             </a>
+            :null}
           </div>
           <div className="large-1 medium-3 small-6 columns">
           {(this.props.newAddress) ?
