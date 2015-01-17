@@ -167,15 +167,15 @@ var CrudList = React.createClass({
               <thead>
                 <tr>
                 {(this.props.deleteEntitiesUrl) ?
-                  <td>
+                  <th>
                     <input type="checkbox" checked={this.state.selectAll} onChange={this._selectAll}/>
-                  </td>
+                  </th>
                   : null}
                     {Object.keys(columns).map(function (key) {
-                      return <td key={key}>{columns[key].name}</td>
+                      return <th key={key}>{columns[key].name}</th>
                     })}
                   {(this.props.deleteEntitiesUrl) ?
-                    <td>{this.props.operationMsg || "Үйлдлүүд"}</td>
+                    <th>{this.props.operationMsg || "Үйлдлүүд"}</th>
                     : null}
                 </tr>
               </thead>
