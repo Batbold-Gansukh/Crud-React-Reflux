@@ -169,10 +169,10 @@ var TableCell = React.createClass({
 
     var cell = ((self) => {
       if (self.state.status === undefined || self.state.status === false) {
-        return (<span onDoubleClick={self._doubleClick}>
+        return (this.props.updateNeeded ? (<span onDoubleClick={self._doubleClick}>
                     {cellHTML}
           <span onClick={self._clickEdit} className="inline-edit">{self.state.editSymbol}</span>
-        </span>)
+        </span>) : null)
       } else if (self.state.status === "committing") {
         return <span>
           <img width="16" src={self.props.loadingSpin} />
